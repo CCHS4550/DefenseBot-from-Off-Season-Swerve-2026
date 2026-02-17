@@ -1,13 +1,10 @@
 package frc.robot;
 
-import static frc.robot.Constants.VisionConstants.*;
-
 import com.pathplanner.lib.auto.AutoBuilder;
 import com.pathplanner.lib.auto.NamedCommands;
 import com.pathplanner.lib.commands.PathPlannerAuto;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
-import edu.wpi.first.math.geometry.Transform3d;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.RunCommand;
 import edu.wpi.first.wpilibj2.command.button.CommandXboxController;
@@ -92,8 +89,8 @@ public class RobotContainer {
         break;
     }
 
-    NamedCommands.registerCommand(
-        "test print", new RunCommand(() -> System.out.println("the test auto is running")));
+    /*NamedCommands.registerCommand(
+        "test print", new RunCommand(() -> System.out.println("the test auto is running")));*/
 
     autoChooser = new LoggedDashboardChooser<>("Auto Choices", AutoBuilder.buildAutoChooser());
     autoChooser.addDefaultOption("test auto", new PathPlannerAuto("test auto"));

@@ -114,12 +114,12 @@ public class Robot extends LoggedRobot {
             () -> robotContainer.drive.setWantedState(WantedState.AUTO), robotContainer.drive)
         .schedule();
     autonomousCommand = robotContainer.getAutonomousCommand();
-    new InstantCommand(() -> System.out.println("auto")).schedule();
+    //new InstantCommand(() -> System.out.println("auto")).schedule();
 
     // schedule the autonomous command (example)
     if (autonomousCommand != null) {
       autonomousCommand.schedule();
-      System.out.println(autonomousCommand.getName());
+      //System.out.println(autonomousCommand.getName());
     }
   }
 

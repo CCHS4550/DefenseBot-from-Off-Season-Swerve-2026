@@ -3,6 +3,7 @@ package frc.robot.ControlSchemes;
 import edu.wpi.first.math.geometry.Pose2d;
 import edu.wpi.first.math.geometry.Rotation2d;
 import edu.wpi.first.math.geometry.Transform2d;
+import edu.wpi.first.math.kinematics.ChassisSpeeds;
 import edu.wpi.first.math.util.Units;
 import edu.wpi.first.wpilibj2.command.Command;
 import edu.wpi.first.wpilibj2.command.Commands;
@@ -15,7 +16,7 @@ import java.util.function.DoubleSupplier;
 /** how a controller interacts with the drive train */
 public class DriveScheme {
   // slow mode or fast mode
-  private static DoubleSupplier driveSpeedModifier = () -> 0.5;
+  private static DoubleSupplier driveSpeedModifier = () -> 0.4;
 
   static Transform2d tagTransform =
       new Transform2d(
@@ -61,7 +62,8 @@ public class DriveScheme {
 
   // sets button bindings
   private static void configureButtons(CommandXboxController controller, Drive drive) {
-
+    controller.a().whileTrue(Commands.runOnce(()->drive.runVelocityWithMaxTurnVelo(new ChassisSpeeds(), 0.1)));
+    //controller.b().whileTrue(Commands.runOnce(()->drive.runVelocityWithMaxTurnVelo(new ChassisSpeeds(), 0.1)));
     // slow mode and fast mode
     // controller.rightBumper().onTrue(Commands.runOnce(() -> setFastMode()));
     // controller.rightBumper().onFalse(Commands.runOnce(() -> setSlowMode()));
