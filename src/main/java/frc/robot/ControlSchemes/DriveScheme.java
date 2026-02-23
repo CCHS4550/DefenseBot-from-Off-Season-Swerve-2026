@@ -16,7 +16,7 @@ import java.util.function.DoubleSupplier;
 /** how a controller interacts with the drive train */
 public class DriveScheme {
   // slow mode or fast mode
-  private static DoubleSupplier driveSpeedModifier = () -> 0.4;
+  private static DoubleSupplier driveSpeedModifier = () -> 0.5;
 
   static Transform2d tagTransform =
       new Transform2d(
@@ -44,11 +44,11 @@ public class DriveScheme {
             Commands.run(
                 () ->
                     drive.setXJoystickInput(
-                        controller.getLeftX() * driveSpeedModifier.getAsDouble())),
+                        controller.getLeftY() * driveSpeedModifier.getAsDouble())),
             Commands.run(
                 () ->
                     drive.setYJoystickInput(
-                        controller.getLeftY() * driveSpeedModifier.getAsDouble())),
+                        -controller.getLeftX() * driveSpeedModifier.getAsDouble())),
             Commands.run(
                 () ->
                     drive.setOmegaJoystickInput(

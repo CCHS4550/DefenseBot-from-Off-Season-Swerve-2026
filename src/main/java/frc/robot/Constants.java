@@ -119,10 +119,10 @@ public final class Constants {
         };
 
     // Zeroed rotation values for each module, see setup instructions
-    public static final Rotation2d frontLeftOffset = Rotation2d.fromRadians(-0.342);
-    public static final Rotation2d frontRightOffset = Rotation2d.fromRadians(0.171);
-    public static final Rotation2d backRightOffset = Rotation2d.fromRadians(-0.669);
-    public static final Rotation2d backLeftOffset = Rotation2d.fromRadians(10.780);
+    public static final Rotation2d frontLeftOffset = Rotation2d.fromRadians(3.362);//1.791
+    public static final Rotation2d frontRightOffset = Rotation2d.fromRadians(0.764);
+    public static final Rotation2d backRightOffset = Rotation2d.fromRadians(-3.257);
+    public static final Rotation2d backLeftOffset = Rotation2d.fromRadians(2.784);
 
     // Device CAN IDs
     public static final int pigeonCanId = 9; // TODO: URGENT, switch to a nav x
@@ -149,8 +149,8 @@ public final class Constants {
 
     public static final boolean frontLeftDriveInverted = true;
     public static final boolean frontRightDriveInverted = true;
-    public static final boolean backLeftDriveInverted = true;
-    public static final boolean backRightDriveInverted = true;
+    public static final boolean backLeftDriveInverted = false;
+    public static final boolean backRightDriveInverted = false;
 
     // Drive motor configuration
     public static final int driveMotorCurrentLimit = 60;
@@ -166,7 +166,7 @@ public final class Constants {
         (2 * Math.PI) / 60.0 / driveMotorReduction; // Rotor RPM -> Wheel Rad/Sec
 
     // Drive PID configuration
-    public static final double driveKp = 0.000001;
+    public static final double driveKp = 0.001;
     public static final double driveKd = 0.0;
 
     public static final double driveKs = 0.16681;
