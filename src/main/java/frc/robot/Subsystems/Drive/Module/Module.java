@@ -87,7 +87,11 @@ public class Module {
 
     // set the motors
     io.setDriveVelo(state.speedMetersPerSecond / Constants.DriveConstants.wheelRadiusMeters);
-    io.setTurnPos(state.angle.plus(new Rotation2d(Math.PI/2)));
+    if(index % 2 == 0){
+      io.setTurnPos(state.angle.plus(new Rotation2d(Math.PI/2)));
+    } else {
+      io.setTurnPos(state.angle.minus(new Rotation2d(Math.PI/2)));
+    }
   }
 
   /**

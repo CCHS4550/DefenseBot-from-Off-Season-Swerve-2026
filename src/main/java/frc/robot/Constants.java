@@ -119,10 +119,10 @@ public final class Constants {
         };
 
     // Zeroed rotation values for each module, see setup instructions
-    public static final Rotation2d frontLeftOffset = Rotation2d.fromRadians(3.362);//1.791
-    public static final Rotation2d frontRightOffset = Rotation2d.fromRadians(0.764);
-    public static final Rotation2d backRightOffset = Rotation2d.fromRadians(-3.257);
-    public static final Rotation2d backLeftOffset = Rotation2d.fromRadians(2.784);
+    public static final Rotation2d frontLeftOffset = Rotation2d.fromRadians(3.362+Math.PI/2);//1.791
+    public static final Rotation2d frontRightOffset = Rotation2d.fromRadians(0.764+Math.PI/2);
+    public static final Rotation2d backRightOffset = Rotation2d.fromRadians(-3.257+Math.PI/2);
+    public static final Rotation2d backLeftOffset = Rotation2d.fromRadians(2.784+Math.PI/2);
 
     // Device CAN IDs
     public static final int pigeonCanId = 9; // TODO: URGENT, switch to a nav x

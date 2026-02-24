@@ -16,7 +16,7 @@ import java.util.function.DoubleSupplier;
 /** how a controller interacts with the drive train */
 public class DriveScheme {
   // slow mode or fast mode
-  private static DoubleSupplier driveSpeedModifier = () -> 0.5;
+  private static DoubleSupplier driveSpeedModifier = () -> 0.6;
 
   static Transform2d tagTransform =
       new Transform2d(
@@ -44,11 +44,11 @@ public class DriveScheme {
             Commands.run(
                 () ->
                     drive.setXJoystickInput(
-                        controller.getLeftY() * driveSpeedModifier.getAsDouble())),
+                        controller.getLeftX() * driveSpeedModifier.getAsDouble())),
             Commands.run(
                 () ->
                     drive.setYJoystickInput(
-                        -controller.getLeftX() * driveSpeedModifier.getAsDouble())),
+                        -controller.getLeftY() * driveSpeedModifier.getAsDouble())),
             Commands.run(
                 () ->
                     drive.setOmegaJoystickInput(
@@ -62,7 +62,7 @@ public class DriveScheme {
 
   // sets button bindings
   private static void configureButtons(CommandXboxController controller, Drive drive) {
-    controller.a().whileTrue(Commands.runOnce(()->drive.runVelocityWithMaxTurnVelo(new ChassisSpeeds(), 0.1)));
+    //controller.a().whileTrue(Commands.runOnce(()->drive.runVelocityWithMaxTurnVelo(new ChassisSpeeds(), 0.1)));
     //controller.b().whileTrue(Commands.runOnce(()->drive.runVelocityWithMaxTurnVelo(new ChassisSpeeds(), 0.1)));
     // slow mode and fast mode
     // controller.rightBumper().onTrue(Commands.runOnce(() -> setFastMode()));
