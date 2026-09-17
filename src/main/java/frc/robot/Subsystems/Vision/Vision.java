@@ -1,14 +1,11 @@
-public class Vision {
-    
-}
 package frc.robot.Vision;
 
 import java.util.ArrayList;
 import java.util.List;
 
-import com.google.flatbuffers.Constants;
+// import com.google.flatbuffers.Constants;
 
-import edu.wpi.first.math.geometry.Pose3d;
+// import edu.wpi.first.math.geometry.Pose3d;
 import edu.wpi.first.wpilibj.Alert;
 import edu.wpi.first.wpilibj.Alert.AlertType;
 import edu.wpi.first.wpilibj2.command.SubsystemBase;
@@ -20,7 +17,7 @@ public class Vision extends SubsystemBase {
 
     private final VisionIO[] io;
 
-    private final VisionIOInputsAutoLogged[] inputs;
+    private final VisionIOInputs[] inputs;
 
     private final Alert[] disconnectedAlerts;
 
@@ -29,11 +26,12 @@ public class Vision extends SubsystemBase {
     public Vision(VisionIO... io) {
         this.io = io;
 
-        this.inputs = new VisionIOInputsAutoLogged[io.length];
+        this.inputs = new VisionIOInputs[io.length];
         this.disconnectedAlerts = new Alert[io.length];
+        this.observations = new ArrayList<List<PoseObservation>>();
 
         for (int i = 0; i < io.length; i++) {
-            inputs[i] = new VisionIOInputsAutoLogged();
+            inputs[i] = new VisionIOInputs();
 
             disconnectedAlerts[i] = new Alert("Camera " + i + " disconnected", AlertType.kWarning);
         }
@@ -50,7 +48,7 @@ public class Vision extends SubsystemBase {
 
             observations.add(new ArrayList<PoseObservation>());
 
-            for (int i = 0; i < inputs[cameraIndex].length; i++) {
+            for (int i = 0; i < inputs[cameraIndex].poseObservations.length; i++) {
                 PoseObservation observation = inputs[cameraIndex].poseObservations[i];
 
                 //Check for bad observation
